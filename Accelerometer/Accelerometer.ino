@@ -35,6 +35,8 @@ void loop() {
     float az = (accel.getCalculatedZ());
 
     // prints accelerometer values if accelerometer is not flat (in z direction)
+    Serial.print(millis());
+    Serial.print(",");
     Serial.print(ax);
     Serial.print(",");
     Serial.print(ay);
