@@ -12,6 +12,7 @@ readData=fscanf(s); %reads "Ready"
     disp(readData)
     d = strsplit(readData, ",");
     disp(d)
+    
     t(i) = str2double(d(1));
     ax(i) = str2double(d(2));
     ay(i) = str2double(d(3));
