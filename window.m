@@ -26,8 +26,7 @@ window = 2000; % window time in ms
 currentIndex = length(t);
 currentTime = t(length(t)-1);
 twoSecondsAgo = currentTime-2000;
-% indexTwoSecondsAgo = find(t==twoSecondsAgo); %not possible, can't find exact time
-% I could use some help for figuring out code to find closest value
+% finds closest value to two seconds ago
 [m, in2] = min(abs(t-twoSecondsAgo));
 axWindow = ax(in2:currentIndex);
 ayWindow = ay(in2:currentIndex);

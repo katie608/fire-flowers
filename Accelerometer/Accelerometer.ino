@@ -36,11 +36,11 @@ void loop() {
 
     // prints accelerometer values if accelerometer is not flat (in z direction)
     Serial.print(millis());
-    Serial.print(",");
+    Serial.print(" ");
     Serial.print(ax);
-    Serial.print(",");
+    Serial.print(" ");
     Serial.print(ay);
-    Serial.print(",");
+    Serial.print(" ");
     Serial.println(az);
   }
 }
