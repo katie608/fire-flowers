@@ -6,7 +6,10 @@ half_length = floor(length(f_double)/2);
 f = f_double(length(f_double)-half_length + 1:end);
 AZ_double = fft(az);
 AZ = AZ_double(1:half_length);
-plot(f,abs(AZ))
+%plot(f,abs(AZ))
+plot(f_double,abs(fftshift(AZ_double)))
+xlabel("Frequency (Hz)")
+ylabel("Magnitude")
 
 [sorted_AZ,ind] = sort(AZ, 'descend');
 max_ind = ind(2);
