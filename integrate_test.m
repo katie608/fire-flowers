@@ -1,5 +1,5 @@
 % s = serial('COM11','BaudRate',9600);
-t = [];
+% t = [];
 % ax = [];
 % ay = [];
 az = [];
@@ -7,7 +7,7 @@ az = [];
 % readData=fscanf(s); %reads "Ready" 
 
 time = linspace(1,10000,10000);
-all_azs = sin(time);
+all_azs = az1
 
 i = 1;
 tic
@@ -19,9 +19,11 @@ while i < 30
 %     ax(i) = str2double(d(2));
 %     ay(i) = str2double(d(3));
 %     az(i) = str2double(d(4));
-    t(i) = time(i);
-    az(i) = all_azs(i);
-    disp(toc)
+%     t(i) = time(i);
+%     az2 = az
+%     az = [az2 all_azs(i)];
+% %     az = append(az, all_azs(i))
+    disp(i)
     
     if mod(toc,1) < 0.1
         disp("there")
@@ -32,8 +34,6 @@ while i < 30
         twoSecondsAgo = currentTime-2000;
         % finds closest value to two seconds ago
         [m, in2] = min(abs(t-twoSecondsAgo));
-        axWindow = ax(in2:currentIndex);
-        ayWindow = ay(in2:currentIndex);
         azWindow = az(in2:currentIndex);
         
         %dft
