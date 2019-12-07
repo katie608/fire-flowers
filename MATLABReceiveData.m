@@ -15,7 +15,7 @@ baudRate = 9600;
 
 % open the serial port, close it first in case it was previously open
 % need to comment this line the first time you run this after opening
-fclose(instrfind({'Port','Status'},{arduinoComPort,'open'}));
+% fclose(instrfind({'Port','Status'},{arduinoComPort,'open'}));
 serialPort = serial(arduinoComPort, 'BAUD', baudRate);
 fopen(serialPort);
 fprintf(serialPort, '\n');
