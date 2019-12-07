@@ -1,7 +1,7 @@
 
 
 
-arduinoComPort = 'COM11';
+arduinoComPort = 'COM13';
 
 % Set the baud rate
 % NOTE1: The baudRate for the sending and receiving programs must be the same!
@@ -67,7 +67,8 @@ while timeout < 5
         
 
 
-        if mod(toc, 1) == 0
+        if mod(toc, 1) < 0.1
+            disp("Got here")
             % create a trailing 2 second window
             window = 2000; % window time in ms
             currentIndex = length(t);
@@ -80,6 +81,7 @@ while timeout < 5
             ayWindow = ay(in2:currentIndex);
             azWindow = az(in2:currentIndex);
             plot(tWindow, azWindow)
+            drawnow
             
         end
         
