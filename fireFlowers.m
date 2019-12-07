@@ -36,7 +36,7 @@ while timeout < 5
         timeout = 0;
         
         % data was received, convert it into array of integers
-        disp(fscanf(serialPort));
+%         disp(fscanf(serialPort));
 
         % read values as character strings from serial port
         valuesChar = fscanf(serialPort);
@@ -55,7 +55,7 @@ while timeout < 5
         
         
         % print the results
-        disp(sprintf('t,ax,ay,az = %d,%d,%d,%d\n',[ti,axi,ayi,azi]));
+%         disp(sprintf('t,ax,ay,az = %d,%d,%d,%d\n',[ti,axi,ayi,azi]));
         
         % put data values in array
         t(i) = ti;
@@ -68,7 +68,7 @@ while timeout < 5
 
 
         if mod(toc, 1) < 0.1
-            disp("Got here")
+            disp("New Window")
             % create a trailing 2 second window
             window = 2000; % window time in ms
             currentIndex = length(t);
@@ -82,6 +82,21 @@ while timeout < 5
             azWindow = az(in2:currentIndex);
             plot(tWindow, azWindow)
             drawnow
+            
+            % this takes the dft and finds the frequency
+            N = length(tWindow);
+            Fs = 20;
+            f_double = linspace(-Fs/2, Fs/2 - Fs/N, N) + Fs/(2*N)*mod(N, 2);
+            half_length = floor(length(f_double)/2);
+            f = f_double(length(f_double)-half_length + 1:end);
+            AZ_double = fft(azWindow);
+            AZ = AZ_double(1:half_length);
+            plot(f,abs(AZ))
+            drawnow
+
+%             [sorted_AZ,ind] = sort(AZ, 'descend');
+%             max_ind = ind(2);
+%             f(max_ind)
             
         end
         
