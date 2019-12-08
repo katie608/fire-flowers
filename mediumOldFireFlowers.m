@@ -1,4 +1,4 @@
-arduinoComPort = 'COM13';
+arduinoComPort = 'COM15';
 
 % Set the baud rate
 % NOTE1: The baudRate for the sending and receiving programs must be the same!
@@ -33,7 +33,7 @@ while timeout < 5
         timeout = 0;
         
         % data was received, convert it into array of integers
-        disp(fscanf(serialPort));
+        disp(fscanf(serialPort)); % this needs to run for it to work
 
         % read values as character strings from serial port
         valuesChar = fscanf(serialPort);
@@ -52,7 +52,8 @@ while timeout < 5
         
         
         % print the results
-        disp(sprintf('t,ax,ay,az = %d,%d,%d,%d\n',[ti,axi,ayi,azi]));
+        %disp(sprintf('t,ax,ay,az = %d,%d,%d,%d\n',[ti,axi,ayi,azi]));
+%         disp("")
         
         % put data values in array
         t(i) = ti;
@@ -91,9 +92,14 @@ while timeout < 5
             plot(f,abs(AZ))
             drawnow
             
+            [sorted_AZ,ind] = sort(AZ, 'descend');
+            max_ind = ind(2);
+            mainFrequency = f(max_ind);
+            disp("The Main Frequency: " +mainFrequency)
+            
         end
         
     end
-    pause(0.5);
+%     pause(0.5);
     timeout = timeout + 1;
 end
